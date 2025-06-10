@@ -11,11 +11,9 @@ class Colors:
         return hsv_list
     
     @staticmethod
-    def convert_to_rgb(hsv_list):
-        import colorsys
+    def to_rgb(hsv_list):
         rgb_list = []
         for hsv in hsv_list:
-            # normalizando pois a função só aceita valores entre 0 e 1
             h_normalized = hsv[0] / 360
             s_normalized = hsv[1] / 100
             v_normalized = hsv[2] / 100

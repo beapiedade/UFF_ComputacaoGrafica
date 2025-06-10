@@ -1,21 +1,5 @@
-from colors import Colors
-from projection import Projection
+from rendering import Colors, Transformation
 from screen import Screen
-
-# vértices
-a = (0, 0, 0)
-b = (5, 4, 0)
-c = (2.5, 4, 4.3)
-d = (-2.5, 4, 4.3)
-e = (-5, 4, 0)
-f = (-2.5, 4, -4.3)
-g = (2.5, 4, -4.3)
-h = (2, 6, 0)
-i = (1, 6, 1.7)
-j = (-1, 6, 1.7)
-k = (-2, 6, 0)
-l = (-1, 6, -1.7)
-m = (1, 6, -1.7)
 
 # arestas
 a1 = (a, b)

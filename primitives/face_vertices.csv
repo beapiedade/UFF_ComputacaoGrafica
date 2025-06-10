@@ -1,0 +1,13 @@
+F1,A,B,C
+F2,A,C,D
+F3,A,D,E
+F4,A,E,F
+F5,A,F,G
+F6,A,G,B
+F7,B,H,I,C
+F8,C,I,J,D
+F9,D,J,K,E
+F10,E,K,L,F
+F11,F,L,M,G
+F12,G,M,H,B
+F13,H,M,L,K,J,I
