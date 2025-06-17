@@ -1,3 +1,5 @@
+import math
+
 class Transformation:
     @staticmethod
     def scaling(vertex, scale):
@@ -8,13 +10,15 @@ class Transformation:
 
     @staticmethod
     def x_rotation(vertex, angle):
-        x = vertex[0]
+        angle = math.radians(angle)
+        x = vertex[0] 
         y = vertex[1] * math.cos(angle) - vertex[2] * math.sin(angle)
         z = vertex[1] * math.sin(angle) + vertex[2] * math.cos(angle)
         return (x, y, z)
 
     @staticmethod
     def y_rotation(vertex, angle):
+        angle = math.radians(angle)
         x = vertex[0] * math.cos(angle) + vertex[2] * math.sin(angle)
         y = vertex[1]
         z = -vertex[0] * math.sin(angle) + vertex[2] * math.cos(angle)
@@ -22,6 +26,7 @@ class Transformation:
 
     @staticmethod
     def z_rotation(vertex, angle):
+        angle = math.radians(angle)
         x = vertex[0] * math.cos(angle) - vertex[1] * math.sin(angle)
         y = vertex[0] * math.sin(angle) + vertex[1] * math.cos(angle)
         z = vertex[2]

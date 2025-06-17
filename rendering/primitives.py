@@ -33,3 +33,17 @@ class Primitives:
                 face_coordinates.append(vertices[1][v_index])
             coordinates.append(face_coordinates)
         return [names, coordinates]
+    
+    @staticmethod
+    def extract_2d_faces(vertices, data):
+        names = []
+        coordinates = []
+        for face in data:
+            names.append(face[0])
+            face_coordinates = []
+            for vertex in face[1:]:
+                v_index = vertices[0].index(vertex)
+                v_coordinates = vertices[1][v_index]
+                face_coordinates.append(v_coordinates[:2])
+            coordinates.append(face_coordinates)
+        return [names, coordinates]
