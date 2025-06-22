@@ -11,12 +11,27 @@ class Colors:
         return hsv_list
     
     @staticmethod
-    def shading(N, hue):
+    def shading(hue, faces, light_position):
+        distances = []
+        for face in faces:
+            x_centroid, y_centroid, z_centroid = 0, 0, 0
+            for vertex in face:
+                x_centroid += vertex[0]
+                y_centroid += vertex[1]
+                z_centroid += vertex[2]
+            n_vertices = len(face)
+            centroid = (x_centroid / n_vertices, 
+                        y_centroid / n_vertices, 
+                        z_centroid / n_vertices)
+            distance = ((centroid[0] - light_position[0]) ** 2 + 
+                        (centroid[1] - light_position[1]) ** 2 + 
+                        (centroid[2] - light_position[2]) ** 2) ** 0.5
+            distances.append(distance)
+
         hsv_list = []
-        factor = 100 // N
-        value = 0
-        for i in range(N):
-            value += factor
+        max_distance = max(distances)
+        for distance in distances:
+            value = 100 - distance / max_distance * 100
             hsv = (hue, 100, value)
             hsv_list.append(hsv)
         return hsv_list

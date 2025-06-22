@@ -1,4 +1,4 @@
-import pygame
+import pygame, math
 from rendering.converter import Converter
 from rendering.primitives import Primitives
 from rendering.projection import Projection
@@ -11,10 +11,12 @@ height = 800
 origin = (width*0.10, height*0.80, 0)
 
 # create the axes
-x_axis, y_axis, z_axis = Projection.create_axis(origin, width, height, 63.4)
+angle = 63.4
+x_axis, y_axis, z_axis = Projection.create_axis(origin, width, height, angle)
+camera = (y_axis[0][0], y_axis[0][1], -200)
 
 # create the objects
-objects_origin = [[300, 100], [200, 50]]
+objects_origin = [[300, 200], [200, 150]]
 objects_data = [
     ["primitives/beatriz/vertex.csv", "primitives/beatriz/face_vertices.csv"], 
     ["primitives/julia/vertex.csv", "primitives/julia/face_vertices.csv"]
@@ -28,35 +30,56 @@ for i in range(len(objects_data)):
 
     # apply the 3D transformation
     new_origin = [origin[0] + objects_origin[i][0], origin[1] - objects_origin[i][1]]
-    ajusted_vertices = Projection.to_pygame_3d_screen(vertices_list[1], new_origin, -63.4)
-    #ajusted_vertices = Projection.to_pygame_screen(vertices_list[1], new_origin[0], new_origin[1])
+    ajusted_vertices = Projection.to_pygame_3d_screen(vertices_list[1], new_origin, -angle)
 
     # extract faces
     faces = Converter.read_csv(object[1])
     faces_list = Primitives.extract_faces([vertices_list[0], ajusted_vertices], faces, 3)
-    faces_list = Primitives.painters_algorithm(faces_list)
+    faces_list = Primitives.painters_algorithm(faces_list, camera)
+
     objects.append(faces_list)
 
+
+# initialize pygame
+pygame.init()
+screen = pygame.display.set_mode((width, height))
+clock = pygame.time.Clock()
+
+#iluminação
+def criar_luz_gradiente(raio, cor):
+    r = raio * 5
+    brilho = pygame.Surface((r*2 , r*2 ), pygame.SRCALPHA) #aqui se vc deixar só (r,r) a luz fica triangular, no momento ela é um circulo posicionado na borda da tela
+
+    for x in range(r * 2):
+        for y in range(r * 2):
+            dx, dy = x - r, y - r
+            dist = math.sqrt(dx * dx + dy * dy)  
+            if dist < r:
+                alpha = int(255 * ((1 - dist / r) ** 3))  #aqui ajusta a suavidade
+                brilho.set_at((x, y), (*cor, alpha))  
+    return brilho
+
+raio_luz = 200
+luz = criar_luz_gradiente(raio_luz, (255, 241, 224))
+
+light_position = (400 - luz.get_width() // 2 - 380, 400 - luz.get_height() // 2 + 380, -200)
 # create the colors
-'''
 objects_hsv_colors = [
-    (280, 100, 100), 
-    (30, 100, 100)
-]
-'''
-objects_hsv_colors = [
-    Colors.shading(len(objects[0][0]),280),
-    Colors.shading(len(objects[1][0]),30)
+    Colors.shading(280, objects[0][1], light_position),
+    Colors.shading(30, objects[1][1], light_position)
 ]
 objects_rgb_colors = [
     Colors.to_rgb(objects_hsv_colors[0]),
     Colors.to_rgb(objects_hsv_colors[1])
 ]
 
-# initialize pygame
-pygame.init()
-screen = pygame.display.set_mode((width, height))
-clock = pygame.time.Clock()
+# convert the objects to pairs
+objects[0] = Primitives.to_pairs(objects[0])
+objects[1] = Primitives.to_pairs(objects[1])
+
+#aqui vc determina onde a luz vai aparecer
+x = light_position[0]
+y = light_position[1]
 
 # run the main loop
 running = True
@@ -66,7 +89,7 @@ while running:
             running = False
         
     # paint the background
-    screen.fill((255, 255, 255))
+    screen.fill((120, 120, 120))
 
     # draw the axes
     pygame.draw.line(screen, (255, 0, 0), x_axis[0], x_axis[1], 1)
@@ -77,6 +100,8 @@ while running:
     for i in range(len(objects)):
         for j in range(len(objects[i][1])):
             pygame.draw.polygon(screen, objects_rgb_colors[i][j], objects[i][1][j], 0)
+
+    screen.blit(luz, (x,y))
 
     pygame.display.flip()
     clock.tick(60)

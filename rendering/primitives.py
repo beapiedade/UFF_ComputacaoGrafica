@@ -1,3 +1,6 @@
+from pygame import Vector3
+
+
 class Primitives:
     @staticmethod
     def extract_vertices(data):
@@ -34,23 +37,40 @@ class Primitives:
             coordinates.append(face_coordinates)
         return [names, coordinates]
 
-    def painters_algorithm(faces):
-        sorted_z = []
+    @staticmethod
+    def painters_algorithm(faces, camera_position):
+        distances = []
         for i in range(len(faces[0])):
             face = faces[1][i]
-            z_sum = 0
+            x_centroid, y_centroid, z_centroid = 0, 0, 0
             for j in range(len(face)):
                 vertex = face[j]
-                z_sum += vertex[2]
-                faces[1][i][j] = (vertex[0], vertex[1])
-            sorted_z.append((faces[0][i], z_sum / len(faces[1][i])))
-        sorted_z.sort(key=lambda x: x[1], reverse=True)
+                x_centroid += vertex[0]
+                y_centroid += vertex[1]
+                z_centroid += vertex[2]
+            n_vertices = len(face)
+            centroid = (x_centroid / n_vertices, 
+                        y_centroid / n_vertices, 
+                        z_centroid / n_vertices)
+            distance = ((centroid[0] - camera_position[0]) ** 2 + 
+                        (centroid[1] - camera_position[1]) ** 2 + 
+                        (centroid[2] - camera_position[2]) ** 2) ** 0.5
+            distances.append((faces[0][i], faces[1][i],distance))
+       
+        distances.sort(key=lambda x: x[2], reverse=True)
         sorted_names = []
         sorted_faces = []
-        for i in range(len(sorted_z)):
-            index = faces[0].index(sorted_z[i][0])
-            sorted_names.append(faces[0][index])
-            sorted_faces.append(faces[1][index])
-        #sorted_names.reverse()
-        #sorted_faces.reverse()
+        for i in range(len(distances)):
+            sorted_names.append(distances[i][0])
+            sorted_faces.append(distances[i][1])
         return [sorted_names,sorted_faces]
+    
+    @staticmethod
+    def to_pairs(faces):
+        new_faces = []
+        for face in faces[1]:
+            new_vertices = []
+            for vertex in face:
+                new_vertices.append((vertex[0], vertex[1]))
+            new_faces.append(new_vertices)
+        return [faces[0], new_faces]
