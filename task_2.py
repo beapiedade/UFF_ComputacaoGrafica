@@ -1,17 +1,8 @@
-import csv
 import pygame
+from rendering.converter import Converter
 from rendering.primitives import Primitives
 from rendering.projection import Projection
-from rendering.transformation import Transformation
 from rendering.colors import Colors
-
-def read_csv(file_path):
-    with open(file_path, mode='r', newline='', encoding='utf-8') as csvfile:
-        reader = csv.reader(csvfile)
-        data = []
-        for row in reader:
-            data.append(row)
-        return data
 
 # Task 2: Alternate Colors Projection
 width = 800
@@ -19,9 +10,9 @@ height = 800
 origin_x = width // 2
 origin_y = height // 2
 
-vertices_list = Primitives.extract_vertices(read_csv("primitives/julia/vertex.csv"))
+vertices_list = Primitives.extract_vertices(Converter.read_csv("primitives/julia/vertex.csv"))
 ajusted_vertices = Projection.to_pygame_screen(vertices_list[1], origin_x, origin_y)
-faces_list = Primitives.extract_2d_faces([vertices_list[0], ajusted_vertices], read_csv("primitives/julia/face_vertices.csv"))
+faces_list = Primitives.extract_faces([vertices_list[0], ajusted_vertices], Converter.read_csv("primitives/julia/face_vertices.csv"), 2)
 
 hsv_colors = Colors.generate_hsv(len(faces_list[0]))
 colors_sequence = Colors.to_rgb(hsv_colors)

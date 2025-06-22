@@ -11,6 +11,17 @@ class Colors:
         return hsv_list
     
     @staticmethod
+    def shading(N, hue):
+        hsv_list = []
+        factor = 100 // N
+        value = 0
+        for i in range(N):
+            value += factor
+            hsv = (hue, 100, value)
+            hsv_list.append(hsv)
+        return hsv_list
+    
+    @staticmethod
     def to_rgb(hsv_list):
         rgb_list = []
         for hsv in hsv_list:

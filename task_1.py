@@ -1,16 +1,8 @@
-import csv
 import pygame
+from rendering.converter import Converter
 from rendering.primitives import Primitives
 from rendering.projection import Projection
 from rendering.transformation import Transformation
-
-def read_csv(file_path):
-    with open(file_path, mode='r', newline='', encoding='utf-8') as csvfile:
-        reader = csv.reader(csvfile)
-        data = []
-        for row in reader:
-            data.append(row)
-        return data
 
 # Task 1: Wireframe Projection
 width = 800
@@ -32,11 +24,11 @@ def update_orientation(vertices_list, vertical_angle, horizontal_angle):
         rotated_vertices.append(vertex)
 
     projected_vertices = Projection.to_pygame_screen(rotated_vertices, origin_x, origin_y)
-    return Primitives.extract_edges([named_vertices, projected_vertices], read_csv("primitives/julia/edge.csv"))
+    return Primitives.extract_edges([named_vertices, projected_vertices], Converter.read_csv("primitives/julia/edge.csv"))
 
-vertices_list = Primitives.extract_vertices(read_csv("primitives/julia/vertex.csv"))
+vertices_list = Primitives.extract_vertices(Converter.read_csv("primitives/julia/vertex.csv"))
 ajusted_vertices = Projection.to_pygame_screen(vertices_list[1], origin_x, origin_y)
-edges_list = Primitives.extract_edges([vertices_list[0],ajusted_vertices], read_csv("primitives/julia/edge.csv"))
+edges_list = Primitives.extract_edges([vertices_list[0],ajusted_vertices], Converter.read_csv("primitives/julia/edge.csv"))
 
 pygame.init()
 screen = pygame.display.set_mode((width, height))

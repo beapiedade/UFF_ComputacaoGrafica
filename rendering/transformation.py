@@ -52,3 +52,11 @@ class Transformation:
         y = vertex[1] + y_delta
         z = vertex[2] + z_delta
         return (x, y, z)
+    
+    @staticmethod
+    def to_cabinet(vertex, angle, factor):
+        angle = math.radians(angle)
+        x = vertex[0] - vertex[2] * factor * math.cos(angle)
+        y = vertex[1] - vertex[2] * factor * math.sin(-angle/2)
+        z = vertex[2]
+        return (x, y, z)
