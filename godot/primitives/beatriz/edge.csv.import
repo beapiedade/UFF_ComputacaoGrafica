@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://ckr8c053qmu71"
+
+[deps]
+
+files=["res://primitives/beatriz/edge.A.translation", "res://primitives/beatriz/edge.B.translation"]
+
+source_file="res://primitives/beatriz/edge.csv"
+dest_files=["res://primitives/beatriz/edge.A.translation", "res://primitives/beatriz/edge.B.translation"]
+
+[params]
+
+compress=true
+delimiter=0

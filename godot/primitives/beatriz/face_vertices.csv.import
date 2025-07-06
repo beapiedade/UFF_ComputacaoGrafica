@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bcuh4fakeavft"
+
+[deps]
+
+files=["res://primitives/beatriz/face_vertices.A.translation", "res://primitives/beatriz/face_vertices.B.translation", "res://primitives/beatriz/face_vertices.en.translation"]
+
+source_file="res://primitives/beatriz/face_vertices.csv"
+dest_files=["res://primitives/beatriz/face_vertices.A.translation", "res://primitives/beatriz/face_vertices.B.translation", "res://primitives/beatriz/face_vertices.en.translation"]
+
+[params]
+
+compress=true
+delimiter=0

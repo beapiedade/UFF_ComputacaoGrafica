@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bus1ftq0uxxom"]
+
+[ext_resource type="Script" path="res://scripts/task_1.gd" id="1_bvmfc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvsbx"]
+shading_mode = 0
+albedo_color = Color(0.627451, 0.12549, 0.941176, 1)
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_kxelk"]
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_lvsbx")
+ignore_occlusion_culling = true
+mesh = SubResource("ImmediateMesh_kxelk")
+script = ExtResource("1_bvmfc")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+fov = 90.0

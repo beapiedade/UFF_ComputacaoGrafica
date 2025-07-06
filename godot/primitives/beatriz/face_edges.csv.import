@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dyngyfj4npyyd"
+
+[deps]
+
+files=["res://primitives/beatriz/face_edges.A1.translation", "res://primitives/beatriz/face_edges.A13.translation", "res://primitives/beatriz/face_edges.A2.translation"]
+
+source_file="res://primitives/beatriz/face_edges.csv"
+dest_files=["res://primitives/beatriz/face_edges.A1.translation", "res://primitives/beatriz/face_edges.A13.translation", "res://primitives/beatriz/face_edges.A2.translation"]
+
+[params]
+
+compress=true
+delimiter=0

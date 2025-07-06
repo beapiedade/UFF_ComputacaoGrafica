@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://cld74nrcqr1oo"
+
+[deps]
+
+files=["res://primitives/julia/vertex.0.0.translation", "res://primitives/julia/vertex.2.4492935982947064e.translation"]
+
+source_file="res://primitives/julia/vertex.csv"
+dest_files=["res://primitives/julia/vertex.0.0.translation", "res://primitives/julia/vertex.2.4492935982947064e.translation"]
+
+[params]
+
+compress=true
+delimiter=0

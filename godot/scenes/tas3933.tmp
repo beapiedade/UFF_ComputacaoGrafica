@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhop7tl6ovi21"]
+
+[ext_resource type="Script" path="res://scripts/task_2.gd" id="1_gv7qw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c0ye5"]
+shading_mode = 0
+albedo_color = Color(0.627451, 0.12549, 0.941176, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pa2fc"]
+albedo_color = Color(0.677667, 0.133, 0.95, 1)
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_jewni"]
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_c0ye5")
+material_overlay = SubResource("StandardMaterial3D_pa2fc")
+mesh = SubResource("ImmediateMesh_jewni")
+script = ExtResource("1_gv7qw")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+keep_aspect = 0

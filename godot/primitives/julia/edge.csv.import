@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dlnl5ylhvc78x"
+
+[deps]
+
+files=["res://primitives/julia/edge.A.translation", "res://primitives/julia/edge.B.translation"]
+
+source_file="res://primitives/julia/edge.csv"
+dest_files=["res://primitives/julia/edge.A.translation", "res://primitives/julia/edge.B.translation"]
+
+[params]
+
+compress=true
+delimiter=0

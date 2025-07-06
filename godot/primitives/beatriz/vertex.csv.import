@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://c8fxk72dg5jpr"
+
+[deps]
+
+files=["res://primitives/beatriz/vertex.0.translation", "res://primitives/beatriz/vertex.0.translation", "res://primitives/beatriz/vertex.0.translation"]
+
+source_file="res://primitives/beatriz/vertex.csv"
+dest_files=["res://primitives/beatriz/vertex.0.translation", "res://primitives/beatriz/vertex.0.translation", "res://primitives/beatriz/vertex.0.translation"]
+
+[params]
+
+compress=true
+delimiter=0

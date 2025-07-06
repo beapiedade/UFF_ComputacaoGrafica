@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dbdb4giymvdjx"
+
+[deps]
+
+files=["res://primitives/julia/v0.0.translation", "res://primitives/julia/v0.4.translation", "res://primitives/julia/v0.0.translation"]
+
+source_file="res://primitives/julia/v0.csv"
+dest_files=["res://primitives/julia/v0.0.translation", "res://primitives/julia/v0.4.translation", "res://primitives/julia/v0.0.translation"]
+
+[params]
+
+compress=true
+delimiter=0

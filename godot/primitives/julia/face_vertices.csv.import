@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://cuxlaa84epdkr"
+
+[deps]
+
+files=["res://primitives/julia/face_vertices.B.translation", "res://primitives/julia/face_vertices.A.translation", "res://primitives/julia/face_vertices.H.translation", "res://primitives/julia/face_vertices.G.translation", "res://primitives/julia/face_vertices.F.translation", "res://primitives/julia/face_vertices.E.translation", "res://primitives/julia/face_vertices.D.translation", "res://primitives/julia/face_vertices.en.translation", "res://primitives/julia/face_vertices.B.translation", "res://primitives/julia/face_vertices.A.translation"]
+
+source_file="res://primitives/julia/face_vertices.csv"
+dest_files=["res://primitives/julia/face_vertices.B.translation", "res://primitives/julia/face_vertices.A.translation", "res://primitives/julia/face_vertices.H.translation", "res://primitives/julia/face_vertices.G.translation", "res://primitives/julia/face_vertices.F.translation", "res://primitives/julia/face_vertices.E.translation", "res://primitives/julia/face_vertices.D.translation", "res://primitives/julia/face_vertices.en.translation", "res://primitives/julia/face_vertices.B.translation", "res://primitives/julia/face_vertices.A.translation"]
+
+[params]
+
+compress=true
+delimiter=0

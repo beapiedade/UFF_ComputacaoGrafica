@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5xmm465wjya3"]
+
+[ext_resource type="Script" path="res://scripts/task_3.gd" id="1_ccid8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ahuwn"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pa2fc"]
+albedo_color = Color(0.677667, 0.133, 0.95, 1)
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_6l82r"]
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_ahuwn")
+material_overlay = SubResource("StandardMaterial3D_pa2fc")
+mesh = SubResource("ImmediateMesh_6l82r")
+script = ExtResource("1_ccid8")
+vertex_file = "res://primitives/beatriz/vertex.csv"
+face_file = "res://primitives/beatriz/face_vertices.csv"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+keep_aspect = 0
