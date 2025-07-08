@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://scripts/task_3.gd" id="1_ccid8"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_umbym"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vagnt"]
 vertex_color_use_as_albedo = true
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_pon2h"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_oj0kb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6eg5w"]
 
@@ -15,14 +15,12 @@ sky_material = SubResource("ProceduralSkyMaterial_6eg5w")
 [sub_resource type="Environment" id="Environment_ovmq2"]
 background_mode = 2
 sky = SubResource("Sky_0vrjp")
-ambient_light_source = 3
-ambient_light_color = Color(0.943251, 0.88017, 0, 1)
 
 [node name="MeshInstance3D" type="MeshInstance3D"]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_umbym")
+material_override = SubResource("StandardMaterial3D_vagnt")
 gi_mode = 2
-mesh = SubResource("ImmediateMesh_pon2h")
+mesh = SubResource("ImmediateMesh_oj0kb")
 script = ExtResource("1_ccid8")
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -33,6 +31,7 @@ keep_aspect = 0
 environment = SubResource("Environment_ovmq2")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.025, 0, 0.0433013, -0.0375, 0.025, 0.0216506, -0.0216506, -0.0433013, 0.0125, 0, 0, 0)
+transform = Transform3D(0.0471923, 0.00815152, -0.014368, -0.00830712, -0.0258793, -0.0419673, -0.0142786, 0.0419978, -0.0230717, 0, 0, 0)
 rotation_order = 0
+light_color = Color(1, 1, 0, 1)
 shadow_enabled = true

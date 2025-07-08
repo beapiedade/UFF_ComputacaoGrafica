@@ -59,13 +59,34 @@ static func get_normalization_scale_factor(vertices_coords: Array) -> float:
 		return 1.0
 
 	var aabb = AABB(vertices_coords[0], Vector3.ZERO)
-	
 	for i in range(1, vertices_coords.size()):
 		aabb = aabb.expand(vertices_coords[i])
 	
 	var max_dimension = aabb.get_longest_axis_size()
-
 	if max_dimension == 0:
 		return 1.0
 
 	return 1.0 / max_dimension
+
+static func calculate_max_distance_to_light(faces: Array, light_position: Vector3) -> float:
+	var max_distance = 0.0
+	
+	if faces.is_empty():
+		return max_distance
+
+	# itera por todas as faces para encontrar a maior distância
+	for face_vertices in faces:
+		# calcula o centroide da face
+		var centroid = Vector3.ZERO
+		for v in face_vertices:
+			centroid += v
+		centroid /= face_vertices.size()
+		
+		# calcula a distância do centroide até a luz
+		var current_distance = centroid.distance_to(light_position)
+		
+		# atualiza a distância máxima se a distância atual for maior
+		if current_distance > max_distance:
+			max_distance = current_distance
+			
+	return max_distance

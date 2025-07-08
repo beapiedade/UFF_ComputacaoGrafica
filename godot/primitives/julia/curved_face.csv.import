@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://c1jrvb7qih3lu"
+
+[deps]
+
+files=["res://primitives/julia/curved_face.A.translation", "res://primitives/julia/curved_face.G.translation", "res://primitives/julia/curved_face.E.translation", "res://primitives/julia/curved_face.en.translation", "res://primitives/julia/curved_face.A.translation"]
+
+source_file="res://primitives/julia/curved_face.csv"
+dest_files=["res://primitives/julia/curved_face.A.translation", "res://primitives/julia/curved_face.G.translation", "res://primitives/julia/curved_face.E.translation", "res://primitives/julia/curved_face.en.translation", "res://primitives/julia/curved_face.A.translation"]
+
+[params]
+
+compress=true
+delimiter=0
