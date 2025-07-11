@@ -31,8 +31,8 @@ class Colors:
         hsv_list = []
         max_distance = max(distances)
         for distance in distances:
-            value = 100 - distance / max_distance * 100
-            hsv = (hue, 100, value)
+            value = 100 - distance / max_distance * 95
+            hsv = (hue, 0, value)
             hsv_list.append(hsv)
         return hsv_list
     

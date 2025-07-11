@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://scripts/task_3.gd" id="1_ccid8"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vagnt"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bm6dv"]
 vertex_color_use_as_albedo = true
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_oj0kb"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_6x8kb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6eg5w"]
 
@@ -18,9 +18,9 @@ sky = SubResource("Sky_0vrjp")
 
 [node name="MeshInstance3D" type="MeshInstance3D"]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_vagnt")
+material_override = SubResource("StandardMaterial3D_bm6dv")
 gi_mode = 2
-mesh = SubResource("ImmediateMesh_oj0kb")
+mesh = SubResource("ImmediateMesh_6x8kb")
 script = ExtResource("1_ccid8")
 
 [node name="Camera3D" type="Camera3D" parent="."]

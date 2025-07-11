@@ -13,7 +13,7 @@ origin = (width*0.10, height*0.80, 0)
 # create the axes
 angle = 63.4
 x_axis, y_axis, z_axis = Projection.create_axis(origin, width, height, angle)
-camera = (y_axis[0][0], y_axis[0][1], -200)
+camera = (100, 300, -200)
 
 # create the objects
 objects_origin = [[300, 200], [200, 150]]
@@ -39,6 +39,9 @@ for i in range(len(objects_data)):
 
     objects.append(faces_list)
 
+#aqui vc determina onde a luz vai aparecer
+x = camera[0]
+y = camera[1]
 
 # initialize pygame
 pygame.init()
@@ -61,12 +64,12 @@ def criar_luz_gradiente(raio, cor):
 
 raio_luz = 200
 luz = criar_luz_gradiente(raio_luz, (255, 241, 224))
+light_position = camera
 
-light_position = (400 - luz.get_width() // 2 - 380, 400 - luz.get_height() // 2 + 380, -200)
 # create the colors
 objects_hsv_colors = [
     Colors.shading(280, objects[0][1], light_position),
-    Colors.shading(30, objects[1][1], light_position)
+    Colors.shading(180, objects[1][1], light_position)
 ]
 objects_rgb_colors = [
     Colors.to_rgb(objects_hsv_colors[0]),
@@ -77,10 +80,6 @@ objects_rgb_colors = [
 objects[0] = Primitives.to_pairs(objects[0])
 objects[1] = Primitives.to_pairs(objects[1])
 
-#aqui vc determina onde a luz vai aparecer
-x = light_position[0]
-y = light_position[1]
-
 # run the main loop
 running = True
 while running:
@@ -89,7 +88,7 @@ while running:
             running = False
         
     # paint the background
-    screen.fill((120, 120, 120))
+    screen.fill((0, 0, 0))
 
     # draw the axes
     pygame.draw.line(screen, (255, 0, 0), x_axis[0], x_axis[1], 1)
@@ -101,7 +100,9 @@ while running:
         for j in range(len(objects[i][1])):
             pygame.draw.polygon(screen, objects_rgb_colors[i][j], objects[i][1][j], 0)
 
-    screen.blit(luz, (x,y))
+    #screen.blit(luz, (x, y))
+
+    pygame.draw.circle(screen, (255, 255, 0), (x,y), 5)
 
     pygame.display.flip()
     clock.tick(60)
